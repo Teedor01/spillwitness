@@ -1,0 +1,309 @@
+{
+  "label": "Curated public-source evidence",
+  "incident": {
+    "id": "nembe-santa-barbara-2021-11",
+    "title": "Santa Barbara Well 1",
+    "location_label": "Nembe, Bayelsa State",
+    "period_label": "November 2021"
+  },
+  "sources": [
+    {
+      "id": "aiteo-statement",
+      "name": "Aiteo Eastern Exploration and Production Company",
+      "type": "OPERATOR",
+      "url": "https://punchng.com/aiteo-reports-oil-spill-in-bayelsa-wellhead/"
+    },
+    {
+      "id": "nosdra-nuprc-jiv",
+      "name": "NOSDRA / NUPRC Joint Investigation Visit finding",
+      "type": "FEDERAL_REGULATOR",
+      "url": "https://www.energyvoice.com/oilandgas/africa/376314/bayelsa-nosdra-aiteo-sabotage/"
+    },
+    {
+      "id": "bayelsa-technical-committee",
+      "name": "Bayelsa State Government Technical Committee (AG Biriyai Dambo)",
+      "type": "STATE_GOVERNMENT",
+      "url": "https://www.vanguardngr.com/2021/12/why-we-rejected-nembe-spill-jiv-report-bayelsa-govt/"
+    },
+    {
+      "id": "bayelsa-governor",
+      "name": "Bayelsa State Governor Douye Diri",
+      "type": "STATE_GOVERNMENT",
+      "url": "https://guardian.ng/news/joint-investigative-visit-will-unravel-cause-volume-of-aiteos-spilled-crude-nosdra/"
+    },
+    {
+      "id": "nosdra-dg",
+      "name": "NOSDRA Director-General Idris Musa",
+      "type": "FEDERAL_REGULATOR",
+      "url": "https://guardian.ng/news/joint-investigative-visit-will-unravel-cause-volume-of-aiteos-spilled-crude-nosdra/"
+    },
+    {
+      "id": "thecable-jiv-member",
+      "name": "TheCable, citing JIV member Victor Ekpenyong (Kenyon International)",
+      "type": "NEWS",
+      "url": "https://www.thecable.ng/the-untold-story-of-the-aiteo-santa-barbara-oil-spill/"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c-occ-1",
+      "field": "OCCURRENCE",
+      "raw_value": "A wellhead blowout occurred at Santa Barbara Well 1.",
+      "normalized_value": "OCCURRED",
+      "source_id": "aiteo-statement",
+      "event_date": "2021-11-05",
+      "publication_date": null,
+      "excerpt": "Aiteo reported a major leakage from OML 29 on November 5, 2021."
+    },
+    {
+      "id": "c-occ-2",
+      "field": "OCCURRENCE",
+      "raw_value": "A wellhead blowout occurred at Santa Barbara Well 1.",
+      "normalized_value": "OCCURRED",
+      "source_id": "nosdra-nuprc-jiv",
+      "event_date": "2021-11-05",
+      "publication_date": null,
+      "excerpt": "JIV convened by NOSDRA, NUPRC, Aiteo and Bayelsa representatives confirms an incident occurred."
+    },
+    {
+      "id": "c-occ-3",
+      "field": "OCCURRENCE",
+      "raw_value": "A wellhead blowout occurred at Santa Barbara Well 1.",
+      "normalized_value": "OCCURRED",
+      "source_id": "bayelsa-technical-committee",
+      "event_date": "2021-11-05",
+      "publication_date": null,
+      "excerpt": "Bayelsa's own technical committee statement confirms the incident occurred; the dispute is about cause, not occurrence."
+    },
+    {
+      "id": "c-loc-1",
+      "field": "LOCATION",
+      "raw_value": "Santa Barbara Well 1, Nembe, Bayelsa State",
+      "normalized_value": "nembe, bayelsa state",
+      "source_id": "aiteo-statement",
+      "event_date": null,
+      "publication_date": null,
+      "excerpt": "Santa Barbara South field, Nembe Local Government Area, OML 29."
+    },
+    {
+      "id": "c-loc-2",
+      "field": "LOCATION",
+      "raw_value": "Santa Barbra River, Nembe, Bayelsa State",
+      "normalized_value": "nembe, bayelsa state",
+      "source_id": "bayelsa-governor",
+      "event_date": null,
+      "publication_date": null,
+      "excerpt": "Governor Diri: crude polluted the Santa Barbra River and Nembe Creeks (note: source spelling)."
+    },
+    {
+      "id": "c-date-1",
+      "field": "DATE",
+      "raw_value": "2021-11-05",
+      "normalized_value": "2021-11-05",
+      "source_id": "aiteo-statement",
+      "event_date": "2021-11-05",
+      "publication_date": null,
+      "excerpt": null
+    },
+    {
+      "id": "c-date-2",
+      "field": "DATE",
+      "raw_value": "2021-11-05",
+      "normalized_value": "2021-11-05",
+      "source_id": "nosdra-dg",
+      "event_date": "2021-11-05",
+      "publication_date": null,
+      "excerpt": "NOSDRA/NAN reporting: leak began Nov. 5."
+    },
+    {
+      "id": "c-cause-1",
+      "field": "CAUSE",
+      "raw_value": "sabotage",
+      "normalized_value": "SABOTAGE",
+      "source_id": "nosdra-nuprc-jiv",
+      "event_date": null,
+      "publication_date": "2021-12-22",
+      "excerpt": "NOSDRA and NUPRC representatives attributed the spill to sabotage following the Dec 22 JIV."
+    },
+    {
+      "id": "c-cause-2",
+      "field": "CAUSE",
+      "raw_value": "act of sabotage, external interference",
+      "normalized_value": "SABOTAGE",
+      "source_id": "thecable-jiv-member",
+      "event_date": null,
+      "publication_date": "2022-02-16",
+      "excerpt": "JIV member (Kenyon International CEO): engineering analysis found the spill would not have happened without external interference."
+    },
+    {
+      "id": "c-cause-3",
+      "field": "CAUSE",
+      "raw_value": "equipment and maintenance failure",
+      "normalized_value": "EQUIPMENT_FAILURE",
+      "source_id": "bayelsa-technical-committee",
+      "event_date": null,
+      "publication_date": "2021-12-27",
+      "excerpt": "Bayelsa's Technical Committee (AG Biriyai Dambo) rejected the JIV report, citing equipment/maintenance failure and noting the wellhead equipment had been removed and replaced before inspection."
+    },
+    {
+      "id": "c-vol-1",
+      "field": "VOLUME",
+      "raw_value": "about two million barrels",
+      "normalized_value": "2e+06",
+      "source_id": "bayelsa-governor",
+      "event_date": null,
+      "publication_date": "2021-12-01",
+      "excerpt": "Governor Diri, visiting the site 25 days after the leak, claimed roughly two million barrels had polluted the river and creeks."
+    },
+    {
+      "id": "c-vol-2",
+      "field": "VOLUME",
+      "raw_value": "4,150 barrels of oil and water residue recovered",
+      "normalized_value": "4e+03",
+      "source_id": "nosdra-dg",
+      "event_date": null,
+      "publication_date": "2021-12-03",
+      "excerpt": "NOSDRA DG Idris Musa called the two-million-barrel claim 'guess work' and cited 4,150 barrels of oil/water residue recovered so far; noted only a completed JIV could determine total volume."
+    }
+  ],
+  "fields": {
+    "OCCURRENCE": {
+      "status": "CORROBORATED",
+      "note": "3 independent sources agree.",
+      "narrative": "Incident occurrence is well supported.",
+      "groups": [
+        {
+          "normalized_value": "OCCURRED",
+          "display_value": "A wellhead blowout occurred at Santa Barbara Well 1.",
+          "claim_ids": [
+            "c-occ-1",
+            "c-occ-2",
+            "c-occ-3"
+          ],
+          "source_ids": [
+            "aiteo-statement",
+            "bayelsa-technical-committee",
+            "nosdra-nuprc-jiv"
+          ]
+        }
+      ],
+      "contributing_claim_ids": [
+        "c-occ-1",
+        "c-occ-2",
+        "c-occ-3"
+      ]
+    },
+    "LOCATION": {
+      "status": "CORROBORATED",
+      "note": "2 independent sources agree.",
+      "narrative": "",
+      "groups": [
+        {
+          "normalized_value": "nembe, bayelsa state",
+          "display_value": "Santa Barbara Well 1, Nembe, Bayelsa State",
+          "claim_ids": [
+            "c-loc-1",
+            "c-loc-2"
+          ],
+          "source_ids": [
+            "aiteo-statement",
+            "bayelsa-governor"
+          ]
+        }
+      ],
+      "contributing_claim_ids": [
+        "c-loc-1",
+        "c-loc-2"
+      ]
+    },
+    "DATE": {
+      "status": "CORROBORATED",
+      "note": "2 independent sources agree.",
+      "narrative": "",
+      "groups": [
+        {
+          "normalized_value": "2021-11-05",
+          "display_value": "2021-11-05",
+          "claim_ids": [
+            "c-date-1",
+            "c-date-2"
+          ],
+          "source_ids": [
+            "aiteo-statement",
+            "nosdra-dg"
+          ]
+        }
+      ],
+      "contributing_claim_ids": [
+        "c-date-1",
+        "c-date-2"
+      ]
+    },
+    "CAUSE": {
+      "status": "CONTESTED",
+      "note": "2 distinct values reported: 'sabotage' (2 source(s)) vs. 'equipment and maintenance failure' (1 source(s)).",
+      "narrative": "The cause remains contested across sources. No causal conclusion is asserted.",
+      "groups": [
+        {
+          "normalized_value": "SABOTAGE",
+          "display_value": "sabotage",
+          "claim_ids": [
+            "c-cause-1",
+            "c-cause-2"
+          ],
+          "source_ids": [
+            "nosdra-nuprc-jiv",
+            "thecable-jiv-member"
+          ]
+        },
+        {
+          "normalized_value": "EQUIPMENT_FAILURE",
+          "display_value": "equipment and maintenance failure",
+          "claim_ids": [
+            "c-cause-3"
+          ],
+          "source_ids": [
+            "bayelsa-technical-committee"
+          ]
+        }
+      ],
+      "contributing_claim_ids": [
+        "c-cause-1",
+        "c-cause-2",
+        "c-cause-3"
+      ]
+    },
+    "VOLUME": {
+      "status": "CONFLICTING",
+      "note": "2 distinct values reported: 'about two million barrels' (1 source(s)) vs. '4,150 barrels of oil and water residue recovered' (1 source(s)).",
+      "narrative": "Reported volume figures conflict significantly across sources. No single figure is asserted as correct.",
+      "groups": [
+        {
+          "normalized_value": "2e+06",
+          "display_value": "about two million barrels",
+          "claim_ids": [
+            "c-vol-1"
+          ],
+          "source_ids": [
+            "bayelsa-governor"
+          ]
+        },
+        {
+          "normalized_value": "4e+03",
+          "display_value": "4,150 barrels of oil and water residue recovered",
+          "claim_ids": [
+            "c-vol-2"
+          ],
+          "source_ids": [
+            "nosdra-dg"
+          ]
+        }
+      ],
+      "contributing_claim_ids": [
+        "c-vol-1",
+        "c-vol-2"
+      ]
+    }
+  },
+  "summary": "Incident occurrence is well supported. The cause remains contested across sources. No causal conclusion is asserted. Reported volume figures conflict significantly across sources. No single figure is asserted as correct."
+}

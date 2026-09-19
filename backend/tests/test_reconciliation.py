@@ -136,7 +136,6 @@ def test_one_source_contradicting_two_is_still_conflicting_but_minority_is_visib
     ]
     assessment = derive_field_status(ClaimField.CAUSE, claims)
     assert assessment.status == FieldStatus.CONTESTED
-    # majority group listed first
     assert assessment.groups[0].normalized_value == "SABOTAGE"
     assert len(assessment.groups[0].source_ids) == 2
     assert len(assessment.groups[1].source_ids) == 1
@@ -159,7 +158,6 @@ def test_volume_disagreement_is_conflicting_not_contested():
 
 
 def test_missing_jiv_still_allows_occurrence_corroboration_from_other_sources():
-
     claims = [
         _claim("a", ClaimField.OCCURRENCE, "occurred", "operator-1"),
         _claim("b", ClaimField.OCCURRENCE, "occurred", "news-1"),

@@ -12,11 +12,9 @@ export interface TimelineEvent {
 }
 
 function groupKeyFor(claim: Claim, date: string): string {
-
   if (claim.field === "OCCURRENCE" || claim.field === "DATE") {
     return `${date}::OCCURRENCE_EVENT`;
   }
-
   return `${date}::${claim.field}::${claim.normalized_value ?? claim.id}`;
 }
 

@@ -1,6 +1,5 @@
 import { FieldStatus, SourceType } from "@/types/evidence";
 
-
 export const STATUS_META: Record<
   FieldStatus,
   { label: string; text: string; bg: string; border: string; description: string }
@@ -75,6 +74,13 @@ export const FIELD_LABEL: Record<string, string> = {
   VOLUME: "Volume",
 };
 
+export const REASON_LABEL: Record<string, string> = {
+  NO_CLAIMS: "No source makes a claim on this field",
+  NO_CONCRETE_VALUE: "Sources reference this field but state no concrete value",
+  MULTIPLE_INDEPENDENT_AGREE: "Multiple independent sources agree",
+  SINGLE_SOURCE: "Only one source makes this claim",
+  INCOMPATIBLE_CLAIMS: "Incompatible claims are present",
+};
 
 export function causeDisplayLabel(normalizedValue: string): string {
   if (normalizedValue === "SABOTAGE") return "Sabotage";

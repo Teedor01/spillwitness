@@ -24,6 +24,7 @@ export interface Source {
   name: string;
   type: SourceType;
   url: string | null;
+  attributed_to: string | null;
 }
 
 export interface Claim {
@@ -35,6 +36,8 @@ export interface Claim {
   event_date: string | null;
   publication_date: string | null;
   excerpt: string | null;
+  derived_from_claim_id: string | null;
+  derived_from_label: string | null;
 }
 
 export interface ValueGroup {
@@ -42,12 +45,14 @@ export interface ValueGroup {
   display_value: string;
   claim_ids: string[];
   source_ids: string[];
+  independent_source_ids: string[];
 }
 
 export interface FieldAssessment {
   status: FieldStatus;
   note: string;
   narrative: string;
+  reason: string;
   groups: ValueGroup[];
   contributing_claim_ids: string[];
 }

@@ -11,7 +11,13 @@ OUTPUT_PATH = os.path.join(
 )
 
 
-def _serialize_claim(c) -> dict:
+def _serialize_claim(c, claims_by_id: dict, sources_by_id: dict) -> dict:
+    derived_label = None
+    if c.derived_from_claim_id and c.derived_from_claim_id in claims_by_id:
+        parent = claims_by_id[c.derived_from_claim_id]
+        parent_source = sources_by_id.get(parent.source_id)
+        parent_source_name = parent_source.name if parent_source else parent.source_id
+        derived_label = f'"{parent.raw_value}" ({parent_source_name})'
     return {
         "id": c.id,
         "field": c.field.value,
@@ -21,11 +27,13 @@ def _serialize_claim(c) -> dict:
         "event_date": c.event_date.isoformat() if c.event_date else None,
         "publication_date": c.publication_date.isoformat() if c.publication_date else None,
         "excerpt": c.excerpt,
+        "derived_from_claim_id": c.derived_from_claim_id,
+        "derived_from_label": derived_label,
     }
 
 
 def _serialize_source(s) -> dict:
-    return {"id": s.id, "name": s.name, "type": s.type.value, "url": s.url}
+    return {"id": s.id, "name": s.name, "type": s.type.value, "url": s.url, "attributed_to": s.attributed_to}
 
 
 def _serialize_group(g) -> dict:
@@ -34,11 +42,14 @@ def _serialize_group(g) -> dict:
         "display_value": g.display_value,
         "claim_ids": g.claim_ids,
         "source_ids": sorted(g.source_ids),
+        "independent_source_ids": sorted(g.independent_source_ids),
     }
 
 
 def build_payload() -> dict:
     result = derive_incident_status(INCIDENT_ID, CLAIMS)
+    claims_by_id = {c.id: c for c in CLAIMS}
+    sources_by_id = {s.id: s for s in SOURCES}
     return {
         "label": CURATED_LABEL,
         "incident": {
@@ -48,12 +59,13 @@ def build_payload() -> dict:
             "period_label": "November 2021",
         },
         "sources": [_serialize_source(s) for s in SOURCES],
-        "claims": [_serialize_claim(c) for c in CLAIMS],
+        "claims": [_serialize_claim(c, claims_by_id, sources_by_id) for c in CLAIMS],
         "fields": {
             field.value: {
                 "status": assessment.status.value,
                 "note": assessment.note,
                 "narrative": field_narrative(field, assessment.status),
+                "reason": assessment.reason,
                 "groups": [_serialize_group(g) for g in assessment.groups],
                 "contributing_claim_ids": assessment.contributing_claim_ids,
             }

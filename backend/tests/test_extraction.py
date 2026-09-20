@@ -48,11 +48,8 @@ def test_validator_rejects_unknown_field_enum_value():
 def test_full_pipeline_extract_validate_pending_approve_reconcile(tmp_path):
     queue_path = str(tmp_path / "pending_claims.json")
 
-    # 1. LLM extracts (offline fixture standing in for the live call,
-    #    since no ANTHROPIC_API_KEY exists in this test environment).
     items = extract_offline(FIXTURE)
 
-    # 2. Schema validates + queues for human review. Nothing is trusted yet.
     accepted, rejected = pending.submit_for_review(
         items, incident_id=INCIDENT_ID, source_id="aiteo-statement", path=queue_path
     )
@@ -64,11 +61,9 @@ def test_full_pipeline_extract_validate_pending_approve_reconcile(tmp_path):
     sabotage_group = next(g for g in baseline.fields[ClaimField.CAUSE].groups if g.normalized_value == "SABOTAGE")
     assert sabotage_group.independent_source_ids == {"nosdra-nuprc-jiv"}
 
-
     pending_id = accepted[0].id
     pending.approve(pending_id, reviewer_note="verified against the source directly", path=queue_path)
     assert pending.list_pending(path=queue_path, status="APPROVED")[0]["status"] == "APPROVED"
-
 
     extracted_claims = pending.approved_to_claims(path=queue_path)
     assert len(extracted_claims) == 1
@@ -79,7 +74,6 @@ def test_full_pipeline_extract_validate_pending_approve_reconcile(tmp_path):
 
     sabotage_group = next(g for g in result.fields[ClaimField.CAUSE].groups if g.normalized_value == "SABOTAGE")
     assert sabotage_group.independent_source_ids == {"nosdra-nuprc-jiv", "aiteo-statement"}
-
 
     assert result.fields[ClaimField.CAUSE].status == FieldStatus.CONTESTED
 

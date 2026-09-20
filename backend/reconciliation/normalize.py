@@ -17,7 +17,6 @@ _LOCATION_ALIASES = {
 }
 
 
-
 _KNOWN_COMMUNITIES = (
     "nembe, bayelsa state",
     "eleme, rivers state",

@@ -108,7 +108,6 @@ def test_location_group_does_not_erase_a_dissenting_claims_own_wording():
     assert any("Well 1" in v for v in raw_values)
     assert any("River" in v for v in raw_values)
 
-
 def test_thecable_cause_claim_is_marked_derived_from_the_jiv_finding():
     payload = build_payload()
     claims = _claims_by_id(payload)

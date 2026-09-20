@@ -21,6 +21,7 @@ def derive_field_status(claim_field: ClaimField, claims: list[Claim]) -> FieldAs
             field=claim_field,
             status=FieldStatus.NOT_ENOUGH_EVIDENCE,
             note="No source makes a claim on this field.",
+            reason="NO_CLAIMS",
         )
 
     groups_by_value: dict[str, ValueGroup] = {}
@@ -36,8 +37,14 @@ def derive_field_status(claim_field: ClaimField, claims: list[Claim]) -> FieldAs
         )
         group.claim_ids.append(c.id)
         group.source_ids.add(c.source_id)
+        if c.derived_from_claim_id is None:
+            group.independent_source_ids.add(c.source_id)
 
-    groups = sorted(groups_by_value.values(), key=lambda g: len(g.source_ids), reverse=True)
+    groups = sorted(
+        groups_by_value.values(),
+        key=lambda g: (len(g.independent_source_ids), len(g.source_ids)),
+        reverse=True,
+    )
     contributing = [cid for g in groups for cid in g.claim_ids] + unquantified_claim_ids
 
     if not groups:
@@ -46,31 +53,40 @@ def derive_field_status(claim_field: ClaimField, claims: list[Claim]) -> FieldAs
             status=FieldStatus.NOT_ENOUGH_EVIDENCE,
             contributing_claim_ids=contributing,
             note="Sources reference this field but none state a concrete value.",
+            reason="NO_CONCRETE_VALUE",
         )
 
     if len(groups) == 1:
         sole_group = groups[0]
-        if len(sole_group.source_ids) >= 2:
+        independent_count = len(sole_group.independent_source_ids)
+        if independent_count >= 2:
             status = FieldStatus.CORROBORATED
-            note = f"{len(sole_group.source_ids)} independent sources agree."
+            note = f"{independent_count} independent sources agree."
+            if len(sole_group.source_ids) > independent_count:
+                note += f" ({len(sole_group.source_ids)} source records total, including derivative reporting.)"
+            reason = "MULTIPLE_INDEPENDENT_AGREE"
         else:
             status = FieldStatus.UNRESOLVED
-            note = "Only one source makes this claim; not independently corroborated."
+            note = "Only one independent source makes this claim; not independently corroborated."
+            if len(sole_group.source_ids) > independent_count:
+                note += " (Additional source records exist but derive from the same underlying finding.)"
+            reason = "SINGLE_SOURCE"
         return FieldAssessment(
             field=claim_field, status=status, groups=groups,
-            contributing_claim_ids=contributing, note=note,
+            contributing_claim_ids=contributing, note=note, reason=reason,
         )
+
 
     status = FieldStatus.CONTESTED if claim_field in _CONTESTED_FIELDS else FieldStatus.CONFLICTING
     lead, runner_up = groups[0], groups[1]
     note = (
         f"{len(groups)} distinct values reported: "
-        f"'{lead.display_value}' ({len(lead.source_ids)} source(s)) vs. "
-        f"'{runner_up.display_value}' ({len(runner_up.source_ids)} source(s))."
+        f"'{lead.display_value}' ({len(lead.independent_source_ids)} independent source(s)) vs. "
+        f"'{runner_up.display_value}' ({len(runner_up.independent_source_ids)} independent source(s))."
     )
     return FieldAssessment(
         field=claim_field, status=status, groups=groups,
-        contributing_claim_ids=contributing, note=note,
+        contributing_claim_ids=contributing, note=note, reason="INCOMPATIBLE_CLAIMS",
     )
 
 
@@ -100,17 +116,36 @@ def _volume_line(status: FieldStatus) -> str:
     }.get(status, "Volume status could not be determined.")
 
 
+def _location_line(status: FieldStatus) -> str:
+    return {
+        FieldStatus.CORROBORATED: "Multiple records place the incident within the same community context. Specific site wording may still differ between records - see individual claims.",
+        FieldStatus.CONFLICTING: "Records report incompatible locations that do not share a common community context.",
+        FieldStatus.UNRESOLVED: "A location comes from a single source and is not independently corroborated.",
+        FieldStatus.NOT_ENOUGH_EVIDENCE: "No source has stated a location.",
+    }.get(status, "Location status could not be determined.")
+
+
+def _date_line(status: FieldStatus) -> str:
+    return {
+        FieldStatus.CORROBORATED: "Multiple records agree on the incident date.",
+        FieldStatus.CONFLICTING: "Records report incompatible dates.",
+        FieldStatus.UNRESOLVED: "A date comes from a single source and is not independently corroborated.",
+        FieldStatus.NOT_ENOUGH_EVIDENCE: "No source has stated a date.",
+    }.get(status, "Date status could not be determined.")
+
+
 _FIELD_LINE_FN = {
     ClaimField.OCCURRENCE: _occurrence_line,
     ClaimField.CAUSE: _cause_line,
     ClaimField.VOLUME: _volume_line,
+    ClaimField.LOCATION: _location_line,
+    ClaimField.DATE: _date_line,
 }
 
 
 def field_narrative(claim_field: ClaimField, status: FieldStatus) -> str:
     fn = _FIELD_LINE_FN.get(claim_field)
     if fn is None:
-
         return ""
     return fn(status)
 

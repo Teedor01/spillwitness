@@ -40,9 +40,10 @@ SOURCES = [
     ),
     Source(
         id="thecable-jiv-member",
-        name="TheCable, citing JIV member Victor Ekpenyong (Kenyon International)",
+        name="TheCable",
         type=SourceType.NEWS,
         url="https://www.thecable.ng/the-untold-story-of-the-aiteo-santa-barbara-oil-spill/",
+        attributed_to="Victor Ekpenyong (Kenyon International CEO), a member of the JIV team",
     ),
 ]
 
@@ -101,7 +102,11 @@ CLAIMS = [
         id="c-cause-2", incident_id=INCIDENT_ID, field=ClaimField.CAUSE,
         raw_value="act of sabotage, external interference", source_id="thecable-jiv-member",
         publication_date=date(2022, 2, 16),
-        excerpt="JIV member (Kenyon International CEO): engineering analysis found the spill would not have happened without external interference.",
+        excerpt="JIV member (Kenyon International CEO) Victor Ekpenyong: 'based on engineering analysis "
+                "conducted during the assessment of the site, the investigation concluded that it was an "
+                "act of sabotage' (verified against the source article directly: Ekpenyong describes the "
+                "JIV's own conclusion, not a separate outside analysis).",
+        derived_from_claim_id="c-cause-1",
     ),
     Claim(
         id="c-cause-3", incident_id=INCIDENT_ID, field=ClaimField.CAUSE,
@@ -109,7 +114,6 @@ CLAIMS = [
         publication_date=date(2021, 12, 27),
         excerpt="Bayelsa's Technical Committee (AG Biriyai Dambo) rejected the JIV report, citing equipment/maintenance failure and noting the wellhead equipment had been removed and replaced before inspection.",
     ),
-
 
     Claim(
         id="c-vol-1", incident_id=INCIDENT_ID, field=ClaimField.VOLUME,

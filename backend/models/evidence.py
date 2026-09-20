@@ -10,10 +10,10 @@ class SourceType(str, Enum):
     OFFICIAL = "OFFICIAL"                
     FEDERAL_REGULATOR = "FEDERAL_REGULATOR"  
     STATE_GOVERNMENT = "STATE_GOVERNMENT"    
-    OPERATOR = "OPERATOR"                
-    COMMUNITY = "COMMUNITY"             
+    OPERATOR = "OPERATOR"               
+    COMMUNITY = "COMMUNITY"              
     NEWS = "NEWS"                       
-    RESEARCH = "RESEARCH"               
+    RESEARCH = "RESEARCH"             
     SATELLITE_CONTEXT = "SATELLITE_CONTEXT"  
 
 
@@ -29,10 +29,10 @@ class FieldStatus(str, Enum):
     CORROBORATED = "CORROBORATED"         
     SUPPORTED = "SUPPORTED"               
     CONTESTED = "CONTESTED"                
-    CONFLICTING = "CONFLICTING"          
-    UNRESOLVED = "UNRESOLVED"             
-    NOT_ESTABLISHED = "NOT_ESTABLISHED"    
-    NOT_ENOUGH_EVIDENCE = "NOT_ENOUGH_EVIDENCE"  
+    CONFLICTING = "CONFLICTING"            
+    UNRESOLVED = "UNRESOLVED"              
+    NOT_ESTABLISHED = "NOT_ESTABLISHED"   
+    NOT_ENOUGH_EVIDENCE = "NOT_ENOUGH_EVIDENCE"
 
 
 @dataclass(frozen=True)
@@ -41,6 +41,7 @@ class Source:
     name: str
     type: SourceType
     url: Optional[str] = None
+    attributed_to: Optional[str] = None
 
 
 @dataclass(frozen=True)
@@ -50,9 +51,10 @@ class Claim:
     field: ClaimField
     raw_value: str
     source_id: str
-    event_date: Optional[date] = None      
-    publication_date: Optional[date] = None 
+    event_date: Optional[date] = None       
+    publication_date: Optional[date] = None  
     excerpt: Optional[str] = None            
+    derived_from_claim_id: Optional[str] = None
 
 
 @dataclass
@@ -61,7 +63,8 @@ class ValueGroup:
     normalized_value: str
     display_value: str
     claim_ids: list[str] = field(default_factory=list)
-    source_ids: set[str] = field(default_factory=set)
+    source_ids: set[str] = field(default_factory=set)  
+    independent_source_ids: set[str] = field(default_factory=set)
 
 
 @dataclass
@@ -71,6 +74,7 @@ class FieldAssessment:
     groups: list[ValueGroup] = field(default_factory=list)
     contributing_claim_ids: list[str] = field(default_factory=list)
     note: str = ""
+    reason: str = ""
 
 
 @dataclass

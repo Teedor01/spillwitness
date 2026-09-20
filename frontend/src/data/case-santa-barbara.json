@@ -11,37 +11,43 @@
       "id": "aiteo-statement",
       "name": "Aiteo Eastern Exploration and Production Company",
       "type": "OPERATOR",
-      "url": "https://punchng.com/aiteo-reports-oil-spill-in-bayelsa-wellhead/"
+      "url": "https://punchng.com/aiteo-reports-oil-spill-in-bayelsa-wellhead/",
+      "attributed_to": null
     },
     {
       "id": "nosdra-nuprc-jiv",
       "name": "NOSDRA / NUPRC Joint Investigation Visit finding",
       "type": "FEDERAL_REGULATOR",
-      "url": "https://www.energyvoice.com/oilandgas/africa/376314/bayelsa-nosdra-aiteo-sabotage/"
+      "url": "https://www.energyvoice.com/oilandgas/africa/376314/bayelsa-nosdra-aiteo-sabotage/",
+      "attributed_to": null
     },
     {
       "id": "bayelsa-technical-committee",
       "name": "Bayelsa State Government Technical Committee (AG Biriyai Dambo)",
       "type": "STATE_GOVERNMENT",
-      "url": "https://www.vanguardngr.com/2021/12/why-we-rejected-nembe-spill-jiv-report-bayelsa-govt/"
+      "url": "https://www.vanguardngr.com/2021/12/why-we-rejected-nembe-spill-jiv-report-bayelsa-govt/",
+      "attributed_to": null
     },
     {
       "id": "bayelsa-governor",
       "name": "Bayelsa State Governor Douye Diri",
       "type": "STATE_GOVERNMENT",
-      "url": "https://guardian.ng/news/joint-investigative-visit-will-unravel-cause-volume-of-aiteos-spilled-crude-nosdra/"
+      "url": "https://guardian.ng/news/joint-investigative-visit-will-unravel-cause-volume-of-aiteos-spilled-crude-nosdra/",
+      "attributed_to": null
     },
     {
       "id": "nosdra-dg",
       "name": "NOSDRA Director-General Idris Musa",
       "type": "FEDERAL_REGULATOR",
-      "url": "https://guardian.ng/news/joint-investigative-visit-will-unravel-cause-volume-of-aiteos-spilled-crude-nosdra/"
+      "url": "https://guardian.ng/news/joint-investigative-visit-will-unravel-cause-volume-of-aiteos-spilled-crude-nosdra/",
+      "attributed_to": null
     },
     {
       "id": "thecable-jiv-member",
-      "name": "TheCable, citing JIV member Victor Ekpenyong (Kenyon International)",
+      "name": "TheCable",
       "type": "NEWS",
-      "url": "https://www.thecable.ng/the-untold-story-of-the-aiteo-santa-barbara-oil-spill/"
+      "url": "https://www.thecable.ng/the-untold-story-of-the-aiteo-santa-barbara-oil-spill/",
+      "attributed_to": "Victor Ekpenyong (Kenyon International CEO), a member of the JIV team"
     }
   ],
   "claims": [
@@ -53,7 +59,9 @@
       "source_id": "aiteo-statement",
       "event_date": "2021-11-05",
       "publication_date": null,
-      "excerpt": "Aiteo reported a major leakage from OML 29 on November 5, 2021."
+      "excerpt": "Aiteo reported a major leakage from OML 29 on November 5, 2021.",
+      "derived_from_claim_id": null,
+      "derived_from_label": null
     },
     {
       "id": "c-occ-2",
@@ -63,7 +71,9 @@
       "source_id": "nosdra-nuprc-jiv",
       "event_date": "2021-11-05",
       "publication_date": null,
-      "excerpt": "JIV convened by NOSDRA, NUPRC, Aiteo and Bayelsa representatives confirms an incident occurred."
+      "excerpt": "JIV convened by NOSDRA, NUPRC, Aiteo and Bayelsa representatives confirms an incident occurred.",
+      "derived_from_claim_id": null,
+      "derived_from_label": null
     },
     {
       "id": "c-occ-3",
@@ -73,7 +83,9 @@
       "source_id": "bayelsa-technical-committee",
       "event_date": "2021-11-05",
       "publication_date": null,
-      "excerpt": "Bayelsa's own technical committee statement confirms the incident occurred; the dispute is about cause, not occurrence."
+      "excerpt": "Bayelsa's own technical committee statement confirms the incident occurred; the dispute is about cause, not occurrence.",
+      "derived_from_claim_id": null,
+      "derived_from_label": null
     },
     {
       "id": "c-loc-1",
@@ -83,7 +95,9 @@
       "source_id": "aiteo-statement",
       "event_date": null,
       "publication_date": null,
-      "excerpt": "Santa Barbara South field, Nembe Local Government Area, OML 29."
+      "excerpt": "Santa Barbara South field, Nembe Local Government Area, OML 29.",
+      "derived_from_claim_id": null,
+      "derived_from_label": null
     },
     {
       "id": "c-loc-2",
@@ -93,7 +107,9 @@
       "source_id": "bayelsa-governor",
       "event_date": null,
       "publication_date": null,
-      "excerpt": "Governor Diri: crude polluted the Santa Barbra River and Nembe Creeks (note: source spelling)."
+      "excerpt": "Governor Diri: crude polluted the Santa Barbra River and Nembe Creeks (note: source spelling).",
+      "derived_from_claim_id": null,
+      "derived_from_label": null
     },
     {
       "id": "c-date-1",
@@ -103,7 +119,9 @@
       "source_id": "aiteo-statement",
       "event_date": "2021-11-05",
       "publication_date": null,
-      "excerpt": null
+      "excerpt": null,
+      "derived_from_claim_id": null,
+      "derived_from_label": null
     },
     {
       "id": "c-date-2",
@@ -113,7 +131,9 @@
       "source_id": "nosdra-dg",
       "event_date": "2021-11-05",
       "publication_date": null,
-      "excerpt": "NOSDRA/NAN reporting: leak began Nov. 5."
+      "excerpt": "NOSDRA/NAN reporting: leak began Nov. 5.",
+      "derived_from_claim_id": null,
+      "derived_from_label": null
     },
     {
       "id": "c-cause-1",
@@ -123,7 +143,9 @@
       "source_id": "nosdra-nuprc-jiv",
       "event_date": null,
       "publication_date": "2021-12-22",
-      "excerpt": "NOSDRA and NUPRC representatives attributed the spill to sabotage following the Dec 22 JIV."
+      "excerpt": "NOSDRA and NUPRC representatives attributed the spill to sabotage following the Dec 22 JIV.",
+      "derived_from_claim_id": null,
+      "derived_from_label": null
     },
     {
       "id": "c-cause-2",
@@ -133,7 +155,9 @@
       "source_id": "thecable-jiv-member",
       "event_date": null,
       "publication_date": "2022-02-16",
-      "excerpt": "JIV member (Kenyon International CEO): engineering analysis found the spill would not have happened without external interference."
+      "excerpt": "JIV member (Kenyon International CEO) Victor Ekpenyong: 'based on engineering analysis conducted during the assessment of the site, the investigation concluded that it was an act of sabotage' (verified against the source article directly: Ekpenyong describes the JIV's own conclusion, not a separate outside analysis).",
+      "derived_from_claim_id": "c-cause-1",
+      "derived_from_label": "\"sabotage\" (NOSDRA / NUPRC Joint Investigation Visit finding)"
     },
     {
       "id": "c-cause-3",
@@ -143,7 +167,9 @@
       "source_id": "bayelsa-technical-committee",
       "event_date": null,
       "publication_date": "2021-12-27",
-      "excerpt": "Bayelsa's Technical Committee (AG Biriyai Dambo) rejected the JIV report, citing equipment/maintenance failure and noting the wellhead equipment had been removed and replaced before inspection."
+      "excerpt": "Bayelsa's Technical Committee (AG Biriyai Dambo) rejected the JIV report, citing equipment/maintenance failure and noting the wellhead equipment had been removed and replaced before inspection.",
+      "derived_from_claim_id": null,
+      "derived_from_label": null
     },
     {
       "id": "c-vol-1",
@@ -153,7 +179,9 @@
       "source_id": "bayelsa-governor",
       "event_date": null,
       "publication_date": "2021-12-01",
-      "excerpt": "Governor Diri, visiting the site 25 days after the leak, claimed roughly two million barrels had polluted the river and creeks."
+      "excerpt": "Governor Diri, visiting the site 25 days after the leak, claimed roughly two million barrels had polluted the river and creeks.",
+      "derived_from_claim_id": null,
+      "derived_from_label": null
     },
     {
       "id": "c-vol-2",
@@ -163,7 +191,9 @@
       "source_id": "nosdra-dg",
       "event_date": null,
       "publication_date": "2021-12-03",
-      "excerpt": "NOSDRA DG Idris Musa called the two-million-barrel claim 'guess work' and cited 4,150 barrels of oil/water residue recovered so far; noted only a completed JIV could determine total volume."
+      "excerpt": "NOSDRA DG Idris Musa called the two-million-barrel claim 'guess work' and cited 4,150 barrels of oil/water residue recovered so far; noted only a completed JIV could determine total volume.",
+      "derived_from_claim_id": null,
+      "derived_from_label": null
     }
   ],
   "fields": {
@@ -171,6 +201,7 @@
       "status": "CORROBORATED",
       "note": "3 independent sources agree.",
       "narrative": "Incident occurrence is well supported.",
+      "reason": "MULTIPLE_INDEPENDENT_AGREE",
       "groups": [
         {
           "normalized_value": "OCCURRED",
@@ -181,6 +212,11 @@
             "c-occ-3"
           ],
           "source_ids": [
+            "aiteo-statement",
+            "bayelsa-technical-committee",
+            "nosdra-nuprc-jiv"
+          ],
+          "independent_source_ids": [
             "aiteo-statement",
             "bayelsa-technical-committee",
             "nosdra-nuprc-jiv"
@@ -196,7 +232,8 @@
     "LOCATION": {
       "status": "CORROBORATED",
       "note": "2 independent sources agree.",
-      "narrative": "",
+      "narrative": "Multiple records place the incident within the same community context. Specific site wording may still differ between records - see individual claims.",
+      "reason": "MULTIPLE_INDEPENDENT_AGREE",
       "groups": [
         {
           "normalized_value": "nembe, bayelsa state",
@@ -206,6 +243,10 @@
             "c-loc-2"
           ],
           "source_ids": [
+            "aiteo-statement",
+            "bayelsa-governor"
+          ],
+          "independent_source_ids": [
             "aiteo-statement",
             "bayelsa-governor"
           ]
@@ -219,7 +260,8 @@
     "DATE": {
       "status": "CORROBORATED",
       "note": "2 independent sources agree.",
-      "narrative": "",
+      "narrative": "Multiple records agree on the incident date.",
+      "reason": "MULTIPLE_INDEPENDENT_AGREE",
       "groups": [
         {
           "normalized_value": "2021-11-05",
@@ -229,6 +271,10 @@
             "c-date-2"
           ],
           "source_ids": [
+            "aiteo-statement",
+            "nosdra-dg"
+          ],
+          "independent_source_ids": [
             "aiteo-statement",
             "nosdra-dg"
           ]
@@ -241,8 +287,9 @@
     },
     "CAUSE": {
       "status": "CONTESTED",
-      "note": "2 distinct values reported: 'sabotage' (2 source(s)) vs. 'equipment and maintenance failure' (1 source(s)).",
+      "note": "2 distinct values reported: 'sabotage' (1 independent source(s)) vs. 'equipment and maintenance failure' (1 independent source(s)).",
       "narrative": "The cause remains contested across sources. No causal conclusion is asserted.",
+      "reason": "INCOMPATIBLE_CLAIMS",
       "groups": [
         {
           "normalized_value": "SABOTAGE",
@@ -254,6 +301,9 @@
           "source_ids": [
             "nosdra-nuprc-jiv",
             "thecable-jiv-member"
+          ],
+          "independent_source_ids": [
+            "nosdra-nuprc-jiv"
           ]
         },
         {
@@ -263,6 +313,9 @@
             "c-cause-3"
           ],
           "source_ids": [
+            "bayelsa-technical-committee"
+          ],
+          "independent_source_ids": [
             "bayelsa-technical-committee"
           ]
         }
@@ -275,8 +328,9 @@
     },
     "VOLUME": {
       "status": "CONFLICTING",
-      "note": "2 distinct values reported: 'about two million barrels' (1 source(s)) vs. '4,150 barrels of oil and water residue recovered' (1 source(s)).",
+      "note": "2 distinct values reported: 'about two million barrels' (1 independent source(s)) vs. '4,150 barrels of oil and water residue recovered' (1 independent source(s)).",
       "narrative": "Reported volume figures conflict significantly across sources. No single figure is asserted as correct.",
+      "reason": "INCOMPATIBLE_CLAIMS",
       "groups": [
         {
           "normalized_value": "2e+06",
@@ -285,6 +339,9 @@
             "c-vol-1"
           ],
           "source_ids": [
+            "bayelsa-governor"
+          ],
+          "independent_source_ids": [
             "bayelsa-governor"
           ]
         },
@@ -295,6 +352,9 @@
             "c-vol-2"
           ],
           "source_ids": [
+            "nosdra-dg"
+          ],
+          "independent_source_ids": [
             "nosdra-dg"
           ]
         }

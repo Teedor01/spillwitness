@@ -5,6 +5,7 @@ import caseData from "@/data/case-santa-barbara.json";
 import { CasePayload } from "@/types/evidence";
 import { CaseHeader } from "@/components/CaseHeader";
 import { EvidenceFindings } from "@/components/EvidenceFindings";
+import { EvidenceGraph } from "@/components/EvidenceGraph";
 import { EvidenceTimeline } from "@/components/EvidenceTimeline";
 import { ClaimDetail } from "@/components/ClaimDetail";
 import { SourcesStrip } from "@/components/SourcesStrip";
@@ -20,13 +21,14 @@ export default function Page() {
   const selectedClaim = selectedClaimId ? claimById.get(selectedClaimId) ?? null : null;
   const selectedSource = selectedClaim ? sourceById.get(selectedClaim.source_id) ?? null : null;
   const selectedClaimFieldStatus = selectedClaim ? payload.fields[selectedClaim.field].status : null;
+  const selectedClaimFieldReason = selectedClaim ? payload.fields[selectedClaim.field].reason : null;
 
 
   const supportingSourceCount = useMemo(() => {
     if (!selectedClaim) return null;
     const assessment = payload.fields[selectedClaim.field];
     const group = assessment.groups.find((g) => g.claim_ids.includes(selectedClaim.id));
-    return group ? group.source_ids.length : null;
+    return group ? group.independent_source_ids.length : null;
   }, [selectedClaim]);
 
   return (
@@ -44,6 +46,15 @@ export default function Page() {
           fields={payload.fields}
           claims={payload.claims}
           sources={payload.sources}
+          selectedClaimId={selectedClaimId}
+          onSelectClaim={setSelectedClaimId}
+        />
+      </div>
+
+      <div className="mt-10">
+        <EvidenceGraph
+          payload={payload}
+          incidentTitle={payload.incident.title}
           selectedClaimId={selectedClaimId}
           onSelectClaim={setSelectedClaimId}
         />
@@ -70,6 +81,7 @@ export default function Page() {
         claim={selectedClaim}
         source={selectedSource}
         fieldStatus={selectedClaimFieldStatus}
+        fieldReason={selectedClaimFieldReason}
         supportingSourceCount={supportingSourceCount}
         onClose={() => setSelectedClaimId(null)}
       />

@@ -7,7 +7,6 @@ import { StatusLabel } from "./StatusLabel";
 
 const FIELD_ORDER: ClaimField[] = ["OCCURRENCE", "LOCATION", "DATE", "CAUSE", "VOLUME"];
 
-
 const EMPHASIZED_STATUSES = new Set(["CONTESTED", "CONFLICTING"]);
 
 export function EvidenceFindings({
@@ -70,6 +69,11 @@ export function EvidenceFindings({
                       {summaryLine}
                     </p>
                   )}
+                  {assessment.reason && (
+                    <p className="mt-0.5 font-mono text-[11px] text-ink-muted">
+                      reconciliation: {assessment.reason}
+                    </p>
+                  )}
                 </div>
                 <span className="shrink-0 pt-0.5 font-mono text-xs text-ink-muted">
                   {isExpanded ? "Hide" : "Details"}
@@ -77,29 +81,54 @@ export function EvidenceFindings({
               </button>
 
               {isExpanded && assessment.groups.length > 0 && (
-                <div className="grid gap-3 pb-4 pl-3 pr-1 sm:grid-cols-2">
-                  {assessment.groups.map((group) => (
-                    <div key={group.normalized_value} className="border-l-2 border-hairline pl-3">
-                      <div className="text-sm text-ink">{group.display_value}</div>
-                      <div className="mt-1 flex flex-wrap gap-2">
-                        {group.claim_ids.map((claimId) => {
-                          const claim = claimById.get(claimId);
-                          const source = claim ? sourceById.get(claim.source_id) : undefined;
-                          return (
-                            <button
-                              key={claimId}
-                              onClick={() => onSelectClaim(claimId)}
-                              className={`font-mono text-xs underline decoration-hairline underline-offset-2 hover:decoration-ink ${
-                                claimId === selectedClaimId ? "text-mark" : "text-ink-muted"
-                              }`}
-                            >
-                              {source?.name ?? "source"}
-                            </button>
-                          );
-                        })}
+                <div className="space-y-3 pb-4 pl-3 pr-1">
+                  {field === "LOCATION" && (
+                    <p className="text-xs text-ink-muted">
+                      Community context established:{" "}
+                      <span className="font-mono text-ink">{assessment.groups[0].normalized_value}</span>.
+                      Specific site wording per source, shown below, is preserved rather than merged.
+                    </p>
+                  )}
+                  {assessment.groups.map((group) => {
+                    const independentCount = group.independent_source_ids.length;
+                    const totalCount = group.source_ids.length;
+                    return (
+                      <div key={group.normalized_value}>
+                        {totalCount > independentCount && (
+                          <p className="mb-1 text-xs text-ink-muted">
+                            {independentCount} independent source{independentCount === 1 ? "" : "s"}, {totalCount} record{totalCount === 1 ? "" : "s"} total
+                          </p>
+                        )}
+                        <div className="grid gap-x-6 gap-y-2 sm:grid-cols-2">
+                          {group.claim_ids.map((claimId) => {
+                            const claim = claimById.get(claimId);
+                            const source = claim ? sourceById.get(claim.source_id) : undefined;
+                            if (!claim || !source) return null;
+                            const isDerived = !!claim.derived_from_claim_id;
+                            return (
+                              <button
+                                key={claimId}
+                                onClick={() => onSelectClaim(claimId)}
+                                className={`border-l-2 pl-3 text-left transition-colors ${
+                                  claimId === selectedClaimId ? "border-mark" : "border-hairline hover:border-ink-muted"
+                                }`}
+                              >
+                                <div className="text-sm text-ink">{claim.raw_value}</div>
+                                <div className="mt-0.5 flex items-center gap-2">
+                                  <span className="font-mono text-xs text-ink-muted">{source.name}</span>
+                                  {isDerived && (
+                                    <span className="rounded-sm border border-hairline px-1 font-mono text-[10px] uppercase tracking-wide text-ink-muted">
+                                      derivative
+                                    </span>
+                                  )}
+                                </div>
+                              </button>
+                            );
+                          })}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </div>

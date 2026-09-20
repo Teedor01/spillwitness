@@ -1,17 +1,19 @@
 import { Claim, FieldStatus, Source } from "@/types/evidence";
-import { FIELD_LABEL, SOURCE_TYPE_LABEL } from "@/lib/status";
+import { FIELD_LABEL, REASON_LABEL, SOURCE_TYPE_LABEL } from "@/lib/status";
 import { StatusLabel } from "./StatusLabel";
 
 export function ClaimDetail({
   claim,
   source,
   fieldStatus,
+  fieldReason,
   supportingSourceCount,
   onClose,
 }: {
   claim: Claim | null;
   source: Source | null;
   fieldStatus: FieldStatus | null;
+  fieldReason: string | null;
   supportingSourceCount: number | null;
   onClose: () => void;
 }) {
@@ -39,28 +41,40 @@ export function ClaimDetail({
         <div>
           <dt className="text-xs text-ink-muted">Normalized claim</dt>
           <dd className="text-ink">{claim.raw_value}</dd>
-          {claim.normalized_value && (
-            <dd className="mt-1 font-mono text-xs text-ink-muted">reconciliation key: {claim.normalized_value}</dd>
+          {claim.derived_from_label && (
+            <dd className="mt-1 text-xs text-ink-muted">
+              Derived from: <span className="text-ink">{claim.derived_from_label}</span> — not counted as
+              independent corroboration for this field.
+            </dd>
           )}
         </div>
 
         <div>
           <dt className="text-xs text-ink-muted">Source</dt>
           <dd className="text-ink">{source.name}</dd>
-          <dd className="mt-1 font-mono text-xs text-ink-muted">{SOURCE_TYPE_LABEL[source.type]}</dd>
+          {source.attributed_to && (
+            <dd className="mt-1 text-xs text-ink-muted">
+              Attributed to: <span className="text-ink">{source.attributed_to}</span>
+            </dd>
+          )}
         </div>
 
-        {claim.event_date && (
-          <div>
-            <dt className="text-xs text-ink-muted">Event date</dt>
-            <dd className="font-mono text-ink">{claim.event_date}</dd>
-          </div>
-        )}
+        <div>
+          <dt className="text-xs text-ink-muted">Source type</dt>
+          <dd className="font-mono text-xs text-ink-muted">{SOURCE_TYPE_LABEL[source.type]}</dd>
+        </div>
 
         {claim.publication_date && (
           <div>
             <dt className="text-xs text-ink-muted">Publication date</dt>
             <dd className="font-mono text-ink">{claim.publication_date}</dd>
+          </div>
+        )}
+
+        {claim.event_date && (
+          <div>
+            <dt className="text-xs text-ink-muted">Event date</dt>
+            <dd className="font-mono text-ink">{claim.event_date}</dd>
           </div>
         )}
 
@@ -83,7 +97,15 @@ export function ClaimDetail({
               >
                 {source.url}
               </a>
+              <span className="ml-1 text-xs text-ink-muted">(opens in a new tab)</span>
             </dd>
+          </div>
+        )}
+
+        {claim.normalized_value && (
+          <div>
+            <dt className="text-xs text-ink-muted">Reconciliation key</dt>
+            <dd className="font-mono text-xs text-ink-muted">{claim.normalized_value}</dd>
           </div>
         )}
 
@@ -93,14 +115,17 @@ export function ClaimDetail({
             <dd className="mt-1">
               <StatusLabel status={fieldStatus} size="sm" />
             </dd>
+            {fieldReason && (
+              <dd className="mt-1 text-xs text-ink-muted">{REASON_LABEL[fieldReason] ?? fieldReason}</dd>
+            )}
           </div>
         )}
 
         {supportingSourceCount !== null && (
           <div>
-            <dt className="text-xs text-ink-muted">Supported by</dt>
+            <dt className="text-xs text-ink-muted">Independent support</dt>
             <dd className="text-ink">
-              {supportingSourceCount} source record{supportingSourceCount === 1 ? "" : "s"}
+              {supportingSourceCount} independent source{supportingSourceCount === 1 ? "" : "s"}
             </dd>
           </div>
         )}

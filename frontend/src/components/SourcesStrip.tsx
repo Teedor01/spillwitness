@@ -10,6 +10,9 @@ export function SourcesStrip({ sources }: { sources: Source[] }) {
           <li key={source.id} className="flex items-start justify-between gap-3 border-l-2 border-hairline pl-3">
             <div>
               <div className="text-sm text-ink">{source.name}</div>
+              {source.attributed_to && (
+                <div className="mt-0.5 text-xs text-ink-muted">Attributed to: {source.attributed_to}</div>
+              )}
               {source.url && (
                 <a
                   href={source.url}
